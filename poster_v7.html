@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poster – Yiran Zi</title>
+<style>
+  /* ── Feminist Color Palette: Pink-Blue ── */
+  :root {
+    --ink:          #3B2F7E;       /* vivid indigo-purple */
+    --paper:        #FFF0F6;       /* warm pink-white paper */
+    --rose:         #E8437A;       /* bright hot pink accent */
+    --lavender:     #6B72D8;       /* periwinkle blue accent */
+    --light-lav:    #DCE0FF;       /* pale periwinkle tint */
+    --blush:        #FFB3D0;       /* bright pastel pink */
+    --light-rose:   #FFF0F6;       /* softest pink */
+    --muted:        #6B5E8A;       /* purple-grey for secondary text */
+    --rule:         #E8D5EF;       /* soft pink-lavender rule */
+    --white:        #FFFFFF;
+    --text-body:    #2A204E;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #C8C5F0;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  /* ── Poster shell: A0 portrait ── */
+  .poster {
+    width: 841px;
+    background: var(--paper);
+    box-shadow: 0 8px 40px rgba(45,27,78,0.22);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  /* ── Header band ── */
+  .header {
+    background: var(--ink);
+    color: var(--white);
+    padding: 28px 36px 22px;
+    border-bottom: 5px solid var(--rose);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Subtle decorative arc top-right */
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(232,67,122,0.15);
+    pointer-events: none;
+  }
+  .header-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-lav);
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--white);
+    margin-bottom: 8px;
+    max-width: 680px;
+  }
+  .header h1 em {
+    color: var(--blush);
+    font-style: normal;
+  }
+  .header-meta {
+    font-size: 11px;
+    color: var(--light-lav);
+    margin-top: 10px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Body: 3-column grid ── */
+  .body {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 0;
+    flex: 1;
+  }
+
+  .col {
+    padding: 20px 18px;
+    border-right: 1px solid var(--rule);
+  }
+  .col:last-child { border-right: none; }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  /* ── Section heading ── */
+  .section-h {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    border-bottom: 2px solid var(--rose);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+
+  /* ── Body text ── */
+  p, li {
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--text-body);
+  }
+  ul {
+    padding-left: 14px;
+    margin-bottom: 8px;
+  }
+  li { margin-bottom: 4px; }
+
+  .spacer { margin-bottom: 18px; }
+
+  /* ── RQ box ── */
+  .rq-box {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .rq-box .rq-label {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light-lav);
+    margin-bottom: 6px;
+  }
+  .rq-box p {
+    font-size: 10.5px;
+    color: var(--white);
+    line-height: 1.45;
+    margin-bottom: 6px;
+  }
+  .rq-box p:last-child { margin-bottom: 0; }
+  .rq-box strong { color: var(--blush); }
+
+  /* ── Method flow ── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 14px;
+  }
+  .flow-step {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 10px;
+    line-height: 1.45;
+    color: var(--ink);
+    position: relative;
+  }
+  .flow-step .step-tag {
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--lavender);
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .flow-step strong { color: var(--rose); }
+  .flow-arrow {
+    text-align: center;
+    font-size: 14px;
+    color: var(--rule);
+    line-height: 1;
+    padding: 2px 0;
+  }
+
+  /* ── Strategy grid ── */
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .strat-card {
+    border-radius: 4px;
+    padding: 7px 8px;
+    font-size: 9.5px;
+    line-height: 1.4;
+  }
+  .strat-card .strat-name {
+    font-weight: 700;
+    font-size: 9px;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .strat-card .strat-def {
+    font-size: 9px;
+    line-height: 1.4;
+    color: #3A2A55;
+  }
+  .strat-card .strat-eg {
+    font-size: 8.5px;
+    color: var(--muted);
+    margin-top: 3px;
+    font-style: italic;
+    line-height: 1.35;
+  }
+  .strat-card.mgt {
+    background: var(--light-lav);
+    border-left: 3px solid var(--lavender);
+  }
+  .strat-card.mgt .strat-name { color: var(--ink); }
+  .strat-card.emergent {
+    background: var(--light-rose);
+    border-left: 3px solid var(--rose);
+  }
+  .strat-card.emergent .strat-name { color: var(--rose); }
+
+  .legend {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    font-size: 9px;
+    color: var(--muted);
+    align-items: center;
+  }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 2px;
+    display: inline-block; margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* ── Bar chart ── */
+  .chart-area {
+    margin-bottom: 14px;
+  }
+  .chart-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 5px;
+  }
+  .bar-name {
+    font-size: 9px;
+    color: var(--ink);
+    width: 118px;
+    flex-shrink: 0;
+    line-height: 1.3;
+  }
+  .bar-track {
+    flex: 1;
+    background: var(--light-lav);
+    border-radius: 2px;
+    height: 14px;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--lavender);
+    transition: width 0.3s;
+  }
+  .bar-fill.top { background: var(--rose); }
+  .bar-pct {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--ink);
+    width: 34px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  /* ── H2 pairing visual ── */
+  .pairing-box {
+    background: var(--ink);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    color: var(--white);
+  }
+  .pairing-box .pair-title {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light-lav);
+    margin-bottom: 8px;
+  }
+  .pairing-visual {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .pair-tag {
+    background: var(--rose);
+    color: var(--white);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 3px;
+  }
+  .pair-op {
+    font-size: 14px;
+    color: var(--light-lav);
+    font-weight: 700;
+  }
+  .pair-count {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: Georgia, serif;
+    color: var(--white);
+  }
+  .pair-count span {
+    font-size: 11px;
+    color: var(--light-lav);
+    font-weight: 400;
+  }
+  .pair-vs {
+    font-size: 9px;
+    color: var(--light-lav);
+    line-height: 1.5;
+  }
+
+  /* ── Discussion/Ceiling section ── */
+  .ceiling-box {
+    background: var(--light-rose);
+    border: 1.5px solid var(--rose);
+    border-radius: 4px;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+  }
+  .ceiling-box .ceiling-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--rose);
+    margin-bottom: 6px;
+    font-family: Georgia, serif;
+  }
+  .ceiling-box p, .ceiling-box li {
+    font-size: 10px;
+    color: #3A1828;
+    line-height: 1.5;
+  }
+
+  /* ── Implications ── */
+  .impl-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .impl-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 8px 10px;
+  }
+  .impl-card .impl-label {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--lavender);
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .impl-card p {
+    font-size: 9.5px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  /* ── Take-home footer ── */
+  .takehome {
+    background: var(--ink);
+    padding: 16px 36px;
+    border-top: 4px solid var(--rose);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .takehome-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-lav);
+    flex-shrink: 0;
+    writing-mode: horizontal-tb;
+  }
+  .takehome-quote {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.35;
+  }
+  .takehome-quote em {
+    color: var(--blush);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  /* ── Validation note chip ── */
+  .chip {
+    display: inline-block;
+    background: var(--light-lav);
+    border-radius: 3px;
+    padding: 3px 7px;
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 12px 0;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ═══ HEADER ═══ -->
+  <div class="header">
+    <div class="header-eyebrow">Research Master Thesis · Communication Science · Universiteit van Amsterdam · 2026</div>
+    <h1>Let Language Resistant Strategies <em>Speak For Us</em>:<br>
+    A Qualitative and Quantitative Analysis of the Nature of Chinese Female Stand-Up Comedians Shows</h1>
+    <div class="header-meta">
+      <span>Yiran Zi &nbsp;·&nbsp; 15527700</span>
+      <span>Supervisor: Prof. A.C. (Anne) Kroon</span>
+      <span>Data: Rock &amp; Roast · Stand-up Comedy and Friends · The King of Stand-up Comedy (2017–2025)</span>
+    </div>
+  </div>
+
+  <!-- ═══ BODY ═══ -->
+  <div class="body">
+
+    <!-- ── LEFT COLUMN ── -->
+    <div class="col">
+
+      <div class="section-label">Background</div>
+      <div class="section-h">Why This Research?</div>
+      <ul>
+        <li>Chinese female stand-up is growing fast — women's share on <em>Rock &amp; Roast</em> rose from <strong>7% → 42%</strong> (2017–2022).</li>
+        <li>In response to the muting status raised by Muted Group Theory (MGT), 3 resistance strategies were proposed (Houston &amp; Kramarae, 1991) — but were they adequate for the current Chinese context?</li>
+        <li>All existing studies are small-scale and qualitative. Corpus-level patterns remain unknown.</li>
+      </ul>
+
+      <div class="spacer"></div>
+
+      <div class="rq-box">
+        <div class="rq-label">Research questions &amp; hypotheses</div>
+        <p><strong>RQ1:</strong> To what extent do the resistance strategies originated from Muted Group Theory apply to Chinese female stand-up comedy, and what additional strategies, if any, emerge from this context?</p>
+        <p><strong>H1:</strong> Among the six language-resistant strategies, naming the strategies of silencing is the <strong>most prevalent</strong> one.</p>
+        <p><strong>H2:</strong> Among all pairwise combinations of the six language-resistant strategies, the co-occurrence of naming the strategies of silencing and irony/hyperbole is the <strong>most frequent</strong>.</p>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="section-label">Method</div>
+      <div class="section-h">Two-Stage Design</div>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-tag">Study 1 — Qualitative</div>
+          <strong>23 transcripts</strong> · Thematic analysis in ATLAS.ti<br>
+          → <strong>Six-strategy framework</strong> developed<br>
+          Cohen's κ = .659
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">
+          <div class="step-tag">Study 2 — Computational</div>
+          <strong>293 transcripts</strong> · gpt-oss-120b (zero-shot)<br>
+          → <strong>469 gender-related segments</strong> coded<br>
+          Validated: MICRO avg F1 (6 strategies) = .667
+        </div>
+      </div>
+
+      <div class="chip">⚠ Rare strategies (n ≤ 6) validated with caution — low support limits reliable F1 estimation.</div>
+
+    </div><!-- /left -->
+
+    <!-- ── MIDDLE COLUMN ── -->
+    <div class="col">
+
+      <div class="section-label">Framework</div>
+      <div class="section-h">Six Resistant Language Strategies</div>
+
+      <div class="legend">
+        <span><span class="legend-dot" style="background:var(--lavender)"></span>From MGT (Houston &amp; Kramarae, 1991)</span>
+        <span><span class="legend-dot" style="background:var(--rose)"></span>Emergent from data</span>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strat-card mgt">
+          <div class="strat-name">Naming the Strategies of Silencing</div>
+          <div class="strat-def">Explicitly points out a gendered double standard or unequal consequence.</div>
+          <div class="strat-eg">e.g. "dresses up" → superficial (women) vs. "chill &amp; profound" (men)</div>
+        </div>
+        <div class="strat-card mgt">
+          <div class="strat-name">Renaming Old Concepts</div>
+          <div class="strat-def">Reworks an existing label to expose its hidden gendered bias.</div>
+          <div class="strat-eg">e.g. "mama's boy" — why blame the mother alone?</div>
+        </div>
+        <div class="strat-card mgt">
+          <div class="strat-name">Creating Alternative Discourses</div>
+          <div class="strat-def">Coins new words or frames that make gendered experience nameable.</div>
+          <div class="strat-eg">e.g. "ordinary yet confident men" (普信男)</div>
+        </div>
+        <div class="strat-card emergent">
+          <div class="strat-name">Irony / Hyperbole</div>
+          <div class="strat-def">Accepts a gender norm on the surface, then exaggerates it to absurdity.</div>
+          <div class="strat-eg">e.g. "Marry him!" chanted even after "he hits me"</div>
+        </div>
+        <div class="strat-card emergent">
+          <div class="strat-name">Gender Subversion</div>
+          <div class="strat-def">Reverses gendered roles so the norm appears arbitrary.</div>
+          <div class="strat-eg">e.g. women on TV praising each other's beer bellies</div>
+        </div>
+        <div class="strat-card emergent">
+          <div class="strat-name">Collectivization</div>
+          <div class="strat-def">Channels individual observation into a collective appeal to women as a group.</div>
+          <div class="strat-eg">e.g. "We strong women would rather die than fawn"</div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section-label">Key Finding — H1</div>
+      <div class="section-h">Prevalence of the Six Strategies</div>
+
+      <div class="chart-area">
+        <div class="chart-title">% of 469 gender-related segments in which each strategy appeared</div>
+
+        <div class="bar-row">
+          <div class="bar-name">Naming the Strategies<br>of Silencing</div>
+          <div class="bar-track">
+            <div class="bar-fill top" style="width:93%"></div>
+          </div>
+          <div class="bar-pct" style="color:var(--rose)">93.0%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Irony /<br>Hyperbole</div>
+          <div class="bar-track"><div class="bar-fill" style="width:28.8%"></div></div>
+          <div class="bar-pct">28.8%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Gender<br>Subversion</div>
+          <div class="bar-track"><div class="bar-fill" style="width:15.1%"></div></div>
+          <div class="bar-pct">15.1%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Creating Alternative<br>Discourses</div>
+          <div class="bar-track"><div class="bar-fill" style="width:4.3%"></div></div>
+          <div class="bar-pct">4.3%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Renaming Old<br>Concepts</div>
+          <div class="bar-track"><div class="bar-fill" style="width:2.1%"></div></div>
+          <div class="bar-pct">2.1%</div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-name">Collectivization</div>
+          <div class="bar-track"><div class="bar-fill" style="width:1.9%"></div></div>
+          <div class="bar-pct">1.9%</div>
+        </div>
+
+        <p style="font-size:9px; color:var(--muted); margin-top:6px; line-height:1.4">
+          Naming the strategies of silencing significantly more prevalent than the 2nd-ranked strategy (McNemar exact <em>p</em> &lt; .001; gap = 64.2 pp). <strong>H1 supported.</strong>
+        </p>
+      </div>
+
+    </div><!-- /middle -->
+
+    <!-- ── RIGHT COLUMN ── -->
+    <div class="col">
+
+      <div class="section-label">Key Finding — H2</div>
+      <div class="section-h">The Most Frequent Strategy Pairing</div>
+
+      <div class="pairing-box">
+        <div class="pair-title">Of all 15 possible pairings</div>
+        <div class="pairing-visual">
+          <span class="pair-tag">Naming the Strategies of Silencing</span>
+          <span class="pair-op">×</span>
+          <span class="pair-tag">Irony / Hyperbole</span>
+        </div>
+        <div class="pair-count">126 <span>segments (26.9%)</span></div>
+        <div class="pair-vs" style="margin-top:6px">
+          2nd place: Naming × Gender Subversion — only <strong style="color:var(--white)">46 segments (9.8%)</strong><br>
+          <em style="color:var(--blush)">Nearly 3× more frequent</em> · McNemar exact <em style="color:var(--white)">p &lt; .001</em>
+        </div>
+      </div>
+
+      <p style="font-size:10px; color:var(--muted); line-height:1.45; margin-bottom:14px">
+        Robustness check: within naming-only segments (n = 436), irony/hyperbole remained the top co-occurring strategy (28.9% vs. 10.6% for gender subversion), confirming the affinity is not a base-rate artefact. <strong>H2 supported.</strong>
+      </p>
+
+      <hr class="divider">
+
+      <div class="section-label">Discussion</div>
+      <div class="section-h">Naming Dominates — Invention Remains Rare</div>
+
+      <div class="ceiling-box">
+        <div class="ceiling-title">Why do Renaming / Creating / Collectivization strategies remain so rare (2–4%)?</div>
+        <ul>
+          <li><strong>Cognitive demand:</strong> coining new vocabulary or voicing collective advocacy requires more than recognizing injustice — it demands building language or claims the culture does not yet normalize.</li>
+          <li><strong>Institutional cost:</strong> feminist neologisms and direct women's advocacy are exactly what China's mainstream discourse treats with most caution — they can spread, stick, and trigger backlash &amp; censorship. Yang Li coined <em>普信男</em> ("ordinary yet confident men") in 2020 → Intel ad removed within days; sustained online harassment followed.</li>
+        </ul>
+        <p style="margin-top:6px"><strong>Result:</strong> comedy excels at <em>pointing at</em> inequality, but rarely builds durable feminist vocabulary <em>or direct advocacy</em>.</p>
+      </div>
+
+      <div class="section-label">Implications</div>
+      <div class="impl-row">
+        <div class="impl-card">
+          <div class="impl-label">Theoretical</div>
+          <p>Validates &amp; extends MGT in a non-Western, commercial media context. The three classic strategies are not equally "alive" — diagnosis is ubiquitous, invention and advocacy remain rare.</p>
+        </div>
+        <div class="impl-card">
+          <div class="impl-label">Methodological</div>
+          <p>LLMs can scale interpretive feminist coding — while mapping the limits of automation. Rare categories still require human judgment.</p>
+        </div>
+      </div>
+
+    </div><!-- /right -->
+
+  </div><!-- /body -->
+
+  <!-- ═══ FOOTER / TAKE-HOME ═══ -->
+  <div class="takehome">
+    <span class="takehome-label">Key Message</span>
+    <div class="takehome-quote">
+      "In a tightly constrained public culture, resistance operates through a recurring formula:
+      <em>name the unfairness</em>, then <em>make it funny enough to circulate</em>."
+    </div>
+  </div>
+
+</div><!-- /poster -->
+</body>
+</html>
